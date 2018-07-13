@@ -1,14 +1,19 @@
 {
   "presets": [
-    ["env", {
-      "target": {
-        "browser": "> 2%"
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": "last 2 versions, > 5%"
+        }
       }
-    }], "react"
+    ],
+    "react"
   ],
   "plugins": [
-    "syntax-dynamic-import",
+    "transform-object-rest-spread",
     "transform-class-properties",
-    "transform-runtime"
+    "transform-runtime",
+    "syntax-dynamic-import"
   ]
 }

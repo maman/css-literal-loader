@@ -1,13 +1,19 @@
 {
   "presets": [
-    ["env", {
-      "target": "node"
-    }], "react"
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current",
+        }
+      }
+    ],
+    "react"
   ],
   "plugins": [
-    "syntax-dynamic-import",
     "transform-object-rest-spread",
     "transform-class-properties",
-    "transform-runtime"
+    "transform-runtime",
+    "syntax-dynamic-import"
   ]
 }
