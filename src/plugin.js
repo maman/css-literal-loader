@@ -4,9 +4,9 @@ import camelCase from 'lodash/camelCase';
 import get from 'lodash/get';
 import kebabCase from 'lodash/kebabCase';
 import { dirname, extname, basename, join, relative } from 'path';
-import * as t from '@babel/types';
-import template from '@babel/template';
-import generate from '@babel/generator';
+import * as t from 'babel-types';
+import template from 'babel-template';
+import generate from 'babel-generator';
 
 const buildImport = template('require(FILENAME);');
 const buildComponent = template(
@@ -65,7 +65,10 @@ export default function plugin() {
 
   function createStyleNode(path, { opts, file }, identifier) {
     const { start, end } = path.node;
-    const style = { start, end };
+    const style = {
+      start,
+      end,
+    };
     const getFileName = opts.getFileName || createFileName;
 
     const hostFile = file.opts.filename;
@@ -90,7 +93,9 @@ export default function plugin() {
     style.code = `require('${style.filename}')`;
 
     styles.add(style);
-    return buildImport({ FILENAME: t.StringLiteral(style.filename) }); // eslint-disable-line new-cap
+    return buildImport({
+      FILENAME: t.StringLiteral(style.filename),
+    }); // eslint-disable-line new-cap
   }
 
   function buildStyledComponent(path, state) {
@@ -140,7 +145,9 @@ export default function plugin() {
       let { styles } = file.get(STYLES);
       styles = Array.from(styles.values());
 
-      file.metadata['css-literal-loader'] = { styles };
+      file.metadata['css-literal-loader'] = {
+        styles,
+      };
 
       if (opts.writeFiles !== false) {
         styles.forEach(({ path, value }) => {
@@ -167,3 +174,5 @@ export default function plugin() {
     },
   };
 }
+
+module.exports = plugin;

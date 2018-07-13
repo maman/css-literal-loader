@@ -1,5 +1,5 @@
 const fs = require('fs-extra');
-const { transformFileSync } = require('@babel/core');
+const { transformFileSync } = require('babel-core');
 const { basename, extname } = require('path');
 const loader = require('../src/loader');
 
@@ -11,8 +11,6 @@ const PARSER_OPTS = {
     'objectRestSpread',
     'decorators',
     'classProperties',
-    'exportDefaultFrom',
-    'exportNamespaceFrom',
     'asyncGenerators',
     'dynamicImport',
     'throwExpressions',
@@ -44,7 +42,13 @@ export function babelRunFixture(fixture) {
       babelrc: false,
       // eslint-ignore-next-line
       plugins: [
-        [require('../src/plugin.js'), { ...options, writeFiles: false }],
+        [
+          require('../src/plugin.js'),
+          {
+            ...options,
+            writeFiles: false,
+          },
+        ],
       ],
       parserOpts: PARSER_OPTS,
     });
@@ -75,13 +79,21 @@ export function webpackRunFixture(fixture) {
     const styles = [];
     const loaderContext = {
       query: options,
-      loaders: [{ request: '/path/css-literal-loader' }],
+      loaders: [
+        {
+          request: '/path/css-literal-loader',
+        },
+      ],
       loaderIndex: 0,
       context: '',
       resource: fixture,
       resourcePath: fixture,
       request: `babel-loader!css-literal-loader!${fixture}`,
-      emitVirtualFile: (path, value) => styles.push({ path, value }),
+      emitVirtualFile: (path, value) =>
+        styles.push({
+          path,
+          value,
+        }),
     };
 
     const code = loader.call(loaderContext, fs.readFileSync(fixture, 'utf-8'));

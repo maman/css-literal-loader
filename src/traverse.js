@@ -1,11 +1,8 @@
-import path from 'path';
-import { transformSync } from '@babel/core';
+import { transform } from 'babel-core';
 import plugin from './plugin';
 
 export default function traverse(source, filename, opts) {
-  const extname = path.extname(filename);
-
-  return transformSync(source, {
+  return transform(source, {
     filename,
     babelrc: false,
     code: false,
@@ -19,15 +16,11 @@ export default function traverse(source, filename, opts) {
       sourceFilename: true,
       plugins: [
         'jsx',
-        extname === '.ts' || extname === '.tsx' ? 'typescript' : 'flow',
-        'doExpressions',
+        'flow',
         'objectRestSpread',
-        'decorators',
         'classProperties',
         'classPrivateProperties',
         'classPrivateMethods',
-        'exportDefaultFrom',
-        'exportNamespaceFrom',
         'asyncGenerators',
         'functionBind',
         'functionSent',
@@ -38,7 +31,6 @@ export default function traverse(source, filename, opts) {
         'bigInt',
         'optionalCatchBinding',
         'throwExpressions',
-        'pipelineOperator',
         'nullishCoalescingOperator',
       ],
     },

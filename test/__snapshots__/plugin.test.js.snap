@@ -2,11 +2,10 @@
 
 exports[`Plugin example js : Compiled JS 1`] = `
 "import { css as less } from 'css-literal-loader/styled';
+
 const SIZE = 75;
 
-const styles =
-/*#__PURE__*/
-require(\\"./example-styles.less\\");"
+const styles = /*#__PURE__*/require('./example-styles.less');"
 `;
 
 exports[`Plugin example styles: example-styles.less 1`] = `
@@ -41,9 +40,8 @@ exports[`Plugin hoist-import ButtonBase: hoist-import-ButtonBase.css 1`] = `
 
 exports[`Plugin hoist-import js : Compiled JS 1`] = `
 "import { styled } from 'css-literal-loader/styled';
-const ButtonBase =
-/*#__PURE__*/
-styled('button', \\"ButtonBase\\", require(\\"./hoist-import-ButtonBase.css\\"), \\"button-base\\", \\"buttonBase\\");"
+
+const ButtonBase = /*#__PURE__*/styled('button', 'ButtonBase', require('./hoist-import-ButtonBase.css'), 'button-base', 'buttonBase');"
 `;
 
 exports[`Plugin multiple-components FancyBox: multiple-components-FancyBox.css 1`] = `
@@ -81,18 +79,18 @@ exports[`Plugin multiple-components FancyHeader: multiple-components-FancyHeader
 
 exports[`Plugin multiple-components js : Compiled JS 1`] = `
 "import { styled, css } from 'css-literal-loader/styled';
-const SIZE = 75; // prettier-ignore
 
-const FancyBox =
-/*#__PURE__*/
-styled('div', \\"FancyBox\\", require(\\"./multiple-components-FancyBox.css\\"), \\"fancy-box\\", \\"fancyBox\\");
-const FancyHeader =
-/*#__PURE__*/
-styled('h2', \\"FancyHeader\\", require(\\"./multiple-components-FancyHeader.css\\"), \\"fancy-header\\", \\"fancyHeader\\");"
+const SIZE = 75;
+
+// prettier-ignore
+const FancyBox = /*#__PURE__*/styled('div', 'FancyBox', require('./multiple-components-FancyBox.css'), 'fancy-box', 'fancyBox');
+
+const FancyHeader = /*#__PURE__*/styled('h2', 'FancyHeader', require('./multiple-components-FancyHeader.css'), 'fancy-header', 'fancyHeader');"
 `;
 
 exports[`Plugin no-global js : Compiled JS 1`] = `
 "const SIZE = 75;
+
 const styles = less\`
   .foo {
     color: red;
@@ -137,14 +135,13 @@ exports[`Plugin styled FancyBox: styled-FancyBox.css 1`] = `
 
 exports[`Plugin styled js : Compiled JS 1`] = `
 "import styled from 'css-literal-loader/styled';
-const SIZE = 75; // prettier-ignore
 
-const FancyBox =
-/*#__PURE__*/
-styled('div', \\"FancyBox\\", require(\\"./styled-FancyBox.css\\"), \\"fancy-box\\", \\"fancyBox\\");
-const FancierBox =
-/*#__PURE__*/
-styled(FancyBox, \\"FancierBox\\", require(\\"./styled-FancierBox.css\\"), \\"fancier-box\\", \\"fancierBox\\");"
+const SIZE = 75;
+
+// prettier-ignore
+const FancyBox = /*#__PURE__*/styled('div', 'FancyBox', require('./styled-FancyBox.css'), 'fancy-box', 'fancyBox');
+
+const FancierBox = /*#__PURE__*/styled(FancyBox, 'FancierBox', require('./styled-FancierBox.css'), 'fancier-box', 'fancierBox');"
 `;
 
 exports[`Plugin with-props RedPasswordInput: with-props-RedPasswordInput.css 1`] = `
@@ -158,9 +155,8 @@ exports[`Plugin with-props RedPasswordInput: with-props-RedPasswordInput.css 1`]
 exports[`Plugin with-props js : Compiled JS 1`] = `
 "import { styled } from 'css-literal-loader/styled';
 import withProps from 'recompose/withProps';
+
 const RedPasswordInput = withProps({
   type: 'password'
-})(
-/*#__PURE__*/
-styled('input', \\"RedPasswordInput\\", require(\\"./with-props-RedPasswordInput.css\\"), \\"red-password-input\\", \\"redPasswordInput\\"));"
+})( /*#__PURE__*/styled('input', 'RedPasswordInput', require('./with-props-RedPasswordInput.css'), 'red-password-input', 'redPasswordInput'));"
 `;

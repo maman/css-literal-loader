@@ -1,3 +1,14 @@
 {
-  "presets": [["@4c/4catalyzer", { "target": "web" }]]
+  "presets": [
+    ["env", {
+      "target": {
+        "browser": "> 2%"
+      }
+    }], "react"
+  ],
+  "plugins": [
+    "syntax-dynamic-import",
+    "transform-class-properties",
+    "transform-runtime"
+  ]
 }
