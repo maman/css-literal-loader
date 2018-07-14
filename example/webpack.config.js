@@ -34,7 +34,7 @@ module.exports = {
   mode: 'development',
   resolve: {
     alias: {
-      'css-literal-loader': path.resolve(__dirname, '../'),
+      '@maman/css-literal-loader': path.resolve(__dirname, '../'),
     },
   },
   plugins: [plugins.html()],

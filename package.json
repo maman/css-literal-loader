@@ -29,7 +29,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/4Catalyzer/css-literal-loader.git"
+    "url": "git+https://github.com/4Catalyzer/@maman/css-literal-loader.git"
   },
   "files": [
     "lib",
@@ -39,9 +39,9 @@
   "author": "4Catalyzer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/4Catalyzer/css-literal-loader/issues"
+    "url": "https://github.com/4Catalyzer/@maman/css-literal-loader/issues"
   },
-  "homepage": "https://github.com/4Catalyzer/css-literal-loader#readme",
+  "homepage": "https://github.com/4Catalyzer/@maman/css-literal-loader#readme",
   "peerDependencies": {
     "babel-core": "^6.26.3",
     "webpack": ">=2"

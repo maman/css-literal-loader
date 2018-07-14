@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { css } from 'css-literal-loader/styled'; // eslint-disable-line import/no-extraneous-dependencies
+import { css } from '@maman/css-literal-loader/styled'; // eslint-disable-line
 
 import 'bootstrap/scss/bootstrap-reboot.scss';
 

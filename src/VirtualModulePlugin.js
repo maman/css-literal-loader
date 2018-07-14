@@ -3,7 +3,7 @@ import MemoryFileSystem from 'memory-fs';
 
 import proxyFileSystem from './proxyFileSystem';
 
-const PLUGIN = 'css-literal-loader';
+const PLUGIN = '@maman/css-literal-loader';
 
 class VirtualModulePlugin {
   /**
@@ -66,7 +66,7 @@ class VirtualModulePlugin {
     const augmentOnCompile = () => {
       this.augmentCompilerFileSystem(compiler);
     };
-    const augmentLoaderCOntext = loaderContext => {
+    const augmentLoaderContext = loaderContext => {
       loaderContext.emitVirtualFile = this.addFile;
     };
 
@@ -76,12 +76,12 @@ class VirtualModulePlugin {
     if (compiler.hooks) {
       compiler.hooks.compile.tap(PLUGIN, augmentOnCompile);
       compiler.hooks.compilation.tap(PLUGIN, compilation => {
-        compilation.hooks.normalModuleLoader.tap(PLUGIN, augmentLoaderCOntext);
+        compilation.hooks.normalModuleLoader.tap(PLUGIN, augmentLoaderContext);
       });
     } else {
       compiler.plugin('compile', augmentOnCompile);
       compiler.plugin('compilation', compilation => {
-        compilation.plugin('normal-module-loader', augmentLoaderCOntext);
+        compilation.plugin('normal-module-loader', augmentLoaderContext);
       });
     }
   }

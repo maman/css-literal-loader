@@ -1,4 +1,4 @@
-import { css as less } from 'css-literal-loader/styled';
+import { css as less } from '@maman/css-literal-loader/styled';
 
 const SIZE = 75;
 

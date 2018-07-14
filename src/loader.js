@@ -42,7 +42,7 @@ function collectStyles(src, filename, opts) {
       writeFiles: false,
       generateInterpolations: true,
     });
-    return { styles: metadata['css-literal-loader'].styles || [] };
+    return { styles: metadata['@maman/css-literal-loader'].styles || [] };
   } catch (err) {
     throw new CssLiteralLoaderError(err);
   }

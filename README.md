@@ -1,4 +1,4 @@
-# css-literal-loader
+# @maman/css-literal-loader
 
 A webpack loader and babel plugin for extracting and processing css defined in other files.
 
@@ -6,7 +6,7 @@ A webpack loader and babel plugin for extracting and processing css defined in o
 
 ```js
 import React from 'react';
-import { css } from 'css-literal-loader/styled';
+import { css } from '@maman/css-literal-loader/styled';
 
 const styles = css`
   .button {
@@ -26,7 +26,7 @@ When processed, the `css` block will be extracted and treated as a `.css` file, 
 It even handles statically analyzable interpolations!
 
 ```js
-import { css } from 'css-literal-loader/styled';
+import { css } from '@maman/css-literal-loader/styled';
 
 const margin = 10;
 const height = 50;
@@ -50,7 +50,7 @@ const styles = css`
 For those that want something a bit more like styled-components, there is an experimental component API!
 
 ```js
-import { styled, css } from 'css-literal-loader/styled'; // import needed!
+import { styled, css } from '@maman/css-literal-loader/styled'; // import needed!
 
 const Button = styled('button')`
   color: black;
@@ -114,7 +114,7 @@ function Button({ primary, color, className, ...props }) {
 }
 ```
 
-Styles are still extracted to a separate file, any props matching other defined classes are passed to the `classNames()` library. At runtime `styled()` returns a React component with the static CSS classes applied. You can check out the ["runtime"](https://github.com/4Catalyzer/css-literal-loader/blob/master/src/runtime/styled.js#L16) it just creates a component.
+Styles are still extracted to a separate file, any props matching other defined classes are passed to the `classNames()` library. At runtime `styled()` returns a React component with the static CSS classes applied. You can check out the ["runtime"](https://github.com/4Catalyzer/@maman/css-literal-loader/blob/master/src/runtime/styled.js#L16) it just creates a component.
 
 There are a whole bucket of caveats of course, to keep the above statically extractable, and limit runtime code.
 
@@ -130,12 +130,12 @@ a more ergonomic way to write normal css/less/sass next to your javascript.
 What does that mean? css-in-js libraries are often a _replacement_ for css preprocessors, in that they provide ways of doing variables, composition, mixins, imports etc. Usually they accomplish this by leaning
 on JS language features where appropriate, and adding there own domain-specific language bits when needed.
 
-css-literal-loader **doesn't try to do any of that** because it's not trying to replace preprocessors but rather, make component-centric javascript work better with **existing** styling tooling. This means at a minimum it needs to scope styles to the component (handled by css-modules) and map those styles to your component's API (props), which is what the above API strives for.
+@maman/css-literal-loader **doesn't try to do any of that** because it's not trying to replace preprocessors but rather, make component-centric javascript work better with **existing** styling tooling. This means at a minimum it needs to scope styles to the component (handled by css-modules) and map those styles to your component's API (props), which is what the above API strives for.
 
 #### Composition, variables, etc?
 
 How you accomplish that is mostly up to your preprocessor. Leverage Sass variables, or Less mixins, orpostcss nesting polyfills, or whatever. The css you'r writing is treated just like a normal style file so all the tooling your used to works here. For composition specifically around classes you can also use css-modules `composes` to compose styles, since
-css-literal-loader extracts styles to consistent names;
+@maman/css-literal-loader extracts styles to consistent names;
 
 ```js
 // Button.js
@@ -181,7 +181,7 @@ It can also be useful to create components with props already applied, like the 
 **[`withProps` documentation](https://github.com/acdlite/recompose/blob/master/docs/API.md#withprops)**
 
 ```jsx
-import { styled } from 'css-literal-loader/styled';
+import { styled } from '@maman/css-literal-loader/styled';
 import withProps from 'recompose/withProps';
 
 const PasswordInput = withProps({ type: 'password' })(styled('input')`
@@ -191,7 +191,7 @@ const PasswordInput = withProps({ type: 'password' })(styled('input')`
 
 ## Setup
 
-Add the css-literal-loader to JavaScript loader configuration, and whatever you want to handle `.css` files:
+Add the @maman/css-literal-loader to JavaScript loader configuration, and whatever you want to handle `.css` files:
 
 ```js
 {
@@ -206,12 +206,12 @@ Add the css-literal-loader to JavaScript loader configuration, and whatever you 
      },
      {
        test: /\.js$/,
-       use: ['babel-loader','css-literal-loader'],
+       use: ['babel-loader','@maman/css-literal-loader'],
      },
-     // css-literal-loader works out of the box with typescript (.ts or .tsx files).
+     // @maman/css-literal-loader works out of the box with typescript (.ts or .tsx files).
      {
        test: /\.tsx?$/,
-       use: ['ts-loader','css-literal-loader'],
+       use: ['ts-loader','@maman/css-literal-loader'],
      },
    }
  }
@@ -220,12 +220,12 @@ Add the css-literal-loader to JavaScript loader configuration, and whatever you 
 
 ### Options
 
-css-literal-loader accepts a few query options.
+@maman/css-literal-loader accepts a few query options.
 
 * **tagName**: (default: `'css'`) The tag identifier used to locate inline css literals and extract them.
 * **extension**: (default: `'.css'`) the extension used for extracted "virtual" files. Change to whatever file type you want webpack to process extracted literals as.
 
-**Note:** css-literal-loader expects uncompiled JavaScript code, If you are using babel or Typescript to transform tagged template literals, ensure the loader runs _before_ babel or typescript loaders.
+**Note:** @maman/css-literal-loader expects uncompiled JavaScript code, If you are using babel or Typescript to transform tagged template literals, ensure the loader runs _before_ babel or typescript loaders.
 
 ## Use without webpack
 
@@ -238,7 +238,7 @@ Config shown below with the default options.
 module.exports = {
   plugins: [
     [
-      'css-literal-loader/babel',
+      '@maman/css-literal-loader/babel',
       {
         tagName: 'css',
         extension: '.css',
@@ -261,5 +261,5 @@ The extracted styles are also available on the `metadata` object returned from `
 ```js
 const { metadata } = babel.transformFile(myJsfile);
 
-metadata['css-literal-loader'].styles; // [{ path, value }]
+metadata['@maman/css-literal-loader'].styles; // [{ path, value }]
 ```

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Plugin example js : Compiled JS 1`] = `
-"import { css as less } from 'css-literal-loader/styled';
+"import { css as less } from '@maman/css-literal-loader/styled';
 
 const SIZE = 75;
 
@@ -39,7 +39,7 @@ exports[`Plugin hoist-import ButtonBase: hoist-import-ButtonBase.css 1`] = `
 `;
 
 exports[`Plugin hoist-import js : Compiled JS 1`] = `
-"import { styled } from 'css-literal-loader/styled';
+"import { styled } from '@maman/css-literal-loader/styled';
 
 const ButtonBase = /*#__PURE__*/styled('button', 'ButtonBase', require('./hoist-import-ButtonBase.css'), 'button-base', 'buttonBase');"
 `;
@@ -78,7 +78,7 @@ exports[`Plugin multiple-components FancyHeader: multiple-components-FancyHeader
 `;
 
 exports[`Plugin multiple-components js : Compiled JS 1`] = `
-"import { styled, css } from 'css-literal-loader/styled';
+"import { styled, css } from '@maman/css-literal-loader/styled';
 
 const SIZE = 75;
 
@@ -134,7 +134,7 @@ exports[`Plugin styled FancyBox: styled-FancyBox.css 1`] = `
 `;
 
 exports[`Plugin styled js : Compiled JS 1`] = `
-"import styled from 'css-literal-loader/styled';
+"import styled from '@maman/css-literal-loader/styled';
 
 const SIZE = 75;
 
@@ -153,7 +153,7 @@ exports[`Plugin with-props RedPasswordInput: with-props-RedPasswordInput.css 1`]
 `;
 
 exports[`Plugin with-props js : Compiled JS 1`] = `
-"import { styled } from 'css-literal-loader/styled';
+"import { styled } from '@maman/css-literal-loader/styled';
 import withProps from 'recompose/withProps';
 
 const RedPasswordInput = withProps({

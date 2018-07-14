@@ -1,4 +1,4 @@
-import { styled } from 'css-literal-loader/styled';
+import { styled } from '@maman/css-literal-loader/styled';
 
 const ButtonBase = styled('button')`
   @import '~./styles/mixins.scss';

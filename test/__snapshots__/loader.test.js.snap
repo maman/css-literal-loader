@@ -17,7 +17,7 @@ exports[`Loader example 0: example-styles.less 1`] = `
 `;
 
 exports[`Loader example js : Compiled JS 1`] = `
-"import { css as less } from 'css-literal-loader/styled';
+"import { css as less } from '@maman/css-literal-loader/styled';
 
 const SIZE = 75;
 
@@ -40,7 +40,7 @@ exports[`Loader hoist-import 0: hoist-import-ButtonBase.css 1`] = `
 `;
 
 exports[`Loader hoist-import js : Compiled JS 1`] = `
-"import { styled } from 'css-literal-loader/styled';
+"import { styled } from '@maman/css-literal-loader/styled';
 
 const ButtonBase = styled('button', \\"ButtonBase\\", require(\\"./hoist-import-ButtonBase.css\\"), \\"button-base\\", \\"buttonBase\\");
 "
@@ -80,7 +80,7 @@ exports[`Loader multiple-components 1: multiple-components-FancyHeader.css 1`] =
 `;
 
 exports[`Loader multiple-components js : Compiled JS 1`] = `
-"import { styled, css } from 'css-literal-loader/styled';
+"import { styled, css } from '@maman/css-literal-loader/styled';
 
 const SIZE = 75;
 
@@ -138,7 +138,7 @@ exports[`Loader styled 1: styled-FancierBox.css 1`] = `
 `;
 
 exports[`Loader styled js : Compiled JS 1`] = `
-"import styled from 'css-literal-loader/styled';
+"import styled from '@maman/css-literal-loader/styled';
 
 const SIZE = 75;
 
@@ -158,7 +158,7 @@ exports[`Loader with-props 0: with-props-RedPasswordInput.css 1`] = `
 `;
 
 exports[`Loader with-props js : Compiled JS 1`] = `
-"import { styled } from 'css-literal-loader/styled';
+"import { styled } from '@maman/css-literal-loader/styled';
 import withProps from 'recompose/withProps';
 
 const RedPasswordInput = withProps({

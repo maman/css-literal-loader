@@ -46,7 +46,7 @@ function createFileName(hostFile, { extension = '.css' }, id) {
 function isTag(path, tagName, allowGlobal = false) {
   return (
     path.get('tag.name').node === tagName &&
-    (path.get('tag').referencesImport('css-literal-loader/styled') ||
+    (path.get('tag').referencesImport('@maman/css-literal-loader/styled') ||
       (allowGlobal && path.scope.hasGlobal(tagName)))
   );
 }
@@ -145,7 +145,7 @@ export default function plugin() {
       let { styles } = file.get(STYLES);
       styles = Array.from(styles.values());
 
-      file.metadata['css-literal-loader'] = {
+      file.metadata['@maman/css-literal-loader'] = {
         styles,
       };
 
@@ -162,7 +162,9 @@ export default function plugin() {
         const { node } = path;
         if (
           t.isCallExpression(node.tag) &&
-          path.get('tag.callee').referencesImport('css-literal-loader/styled')
+          path
+            .get('tag.callee')
+            .referencesImport('@maman/css-literal-loader/styled')
         ) {
           path.replaceWith(buildStyledComponent(path, state));
           path.addComment('leading', '#__PURE__');

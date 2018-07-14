@@ -53,7 +53,7 @@ export function babelRunFixture(fixture) {
       parserOpts: PARSER_OPTS,
     });
 
-    const { styles } = metadata['css-literal-loader'] || {};
+    const { styles } = metadata['@maman/css-literal-loader'] || {};
 
     it('js ', () => {
       expect(code).toMatchSnapshot(`Compiled JS`);
@@ -81,14 +81,14 @@ export function webpackRunFixture(fixture) {
       query: options,
       loaders: [
         {
-          request: '/path/css-literal-loader',
+          request: '/path/@maman/css-literal-loader',
         },
       ],
       loaderIndex: 0,
       context: '',
       resource: fixture,
       resourcePath: fixture,
-      request: `babel-loader!css-literal-loader!${fixture}`,
+      request: `babel-loader!@maman/css-literal-loader!${fixture}`,
       emitVirtualFile: (path, value) =>
         styles.push({
           path,
